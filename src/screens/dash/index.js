@@ -1,0 +1,21 @@
+import React, { Component } from 'react'
+import { View, Text, SafeAreaView} from 'react-native'
+
+import Bar from './barchart'
+ 
+class Dashboard extends Component {
+
+    constructor(props){
+        super(props)
+    }
+ 
+    render () {
+        return (
+            <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+                <Bar />
+            </SafeAreaView>  
+        )
+    }
+}
+
+export default Dashboard
