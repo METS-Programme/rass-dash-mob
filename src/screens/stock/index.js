@@ -16,11 +16,52 @@ import {
   Segment,
   List,
   ListItem,
-  Badge
+  Badge,
+  View,
+  Card,
+  CardItem
 } from "native-base";
 import styles from "./styles";
 
 import Status from "./status";
+import { Dimensions,ScrollView } from "react-native";
+import {
+  BarChart,
+} from 'react-native-chart-kit'
+
+const data = {
+  labels: ['Acholi', 'Bunyoro', 'Central 1', 'Central','East',' Kampala','Lango','Masaka','Rwenzori','Soroti','West Nile'],
+  datasets: [{
+    data: [
+      0,
+      0,0,0,
+      1,
+      4,
+      0,1,7,1,1,
+    ],
+    color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})` // optional
+  }]
+}
+// in Expo - swipe left to see the following styling, or create your own
+const chartConfigs =
+{
+  backgroundColor: '#000000',
+  backgroundGradientFrom: '#1E2923',
+  backgroundGradientTo: '#08130D',
+  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  // style: {
+  //     borderRadius: 16                                     ---- removed for the bar graph not needed
+  // }
+}
+
+const graphStyle = {
+  marginVertical: 8,
+  ...chartConfigs.style
+}
+
+
+
+
 
 class Stock extends Component {
   constructor(props) {
@@ -99,6 +140,8 @@ class Stock extends Component {
   }
 
   render() {
+    const width = Dimensions.get('window').width
+        const height = 220
     return (
       <Container style={styles.container}>
         <Header>
@@ -108,7 +151,7 @@ class Stock extends Component {
             </Button>
           </Left>
           <Body>
-            <Title>Commodities</Title>
+            <Title>Stock Status</Title>
           </Body>
           <Right>
             <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -117,69 +160,146 @@ class Stock extends Component {
           </Right>
         </Header>
         <Segment>
-              <Button
-                first
-                active={this.state.seg === 1 ? true : false}
-                onPress={() => this.setState({ seg: 1 })}
-              >
-                <Text>STKA</Text>
-              </Button>
-              <Button
-                active={this.state.seg === 2 ? true : false}
-                onPress={() => this.setState({ seg: 2 })}
-              >
-                <Text>STKC</Text>
-              </Button>
-              <Button
-                last
-                active={this.state.seg === 3 ? true : false}
-                onPress={() => this.setState({ seg: 3 })}
-              >
-                <Text>RTKS</Text>
-              </Button>
-            </Segment>
+          <Button
+            first
+            active={this.state.seg === 1 ? true : false}
+            onPress={() => this.setState({ seg: 1 })}
+          >
+            <Text>Adults</Text>
+          </Button>
+          <Button
+            active={this.state.seg === 2 ? true : false}
+            onPress={() => this.setState({ seg: 2 })}
+          >
+            <Text>Paediatrics</Text>
+          </Button>
+          <Button
+            last
+            active={this.state.seg === 3 ? true : false}
+            onPress={() => this.setState({ seg: 3 })}
+          >
+            <Text>RTKS</Text>
+          </Button>
+        </Segment>
 
         <Content padder >
-          {this.state.seg === 1 && 
-          <List
-            dataArray={this.state.datas}
-            renderRow={data =>
-              <ListItem
-                button
-                onPress={() => this.props.navigation.navigate(data.route)}
-              >
-                <Left>
-                  <Text>
-                    {data.text}
-                  </Text>
-                </Left>
-                {data.num &&
-                <Right style={{ flex: 1 }}>
-                    <Badge
-                    
-                    style={{
-                        //borderRadius: 3,
-                        //height: 25,
-                        //width: 72,
-                        //backgroundColor: data.bg,
-                        backgroundColor: data.bg
-                    }}
-                    textStyle={{ color: "white" }}
-                    >
-                    <Text
-                        style={styles.badgeText}
-                    >{`${data.num} C`}</Text>
-                    </Badge>
-                </Right>}
-              </ListItem>}
-          />
-          
+          {this.state.seg === 1 &&
+            <View style={{ flex: 1 }}>
+              <View style={{ flex: 1, paddingLeft: 5, paddingRight: 5, paddingTop: 0 }}>
+                <ScrollView>
+                  <View flexDirection="row">
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem>
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', fontSize: 10 }}>15 of 94 Health Facilities Stocked Out</Text>
+                      </CardItem>
+                    </Card>
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem >
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'flex-start', fontSize: 10 }}>94 of 1074 Health Facilities Reported [Missing Reports]</Text>
+                      </CardItem>
+                    </Card>
+                  </View>
+
+                  <View style={{ flex: 1 }}>
+                    <Text style={{
+                      flex: 1,
+                      marginVertical: 10,
+                      textAlign: 'center',
+                      fontSize: 10,
+                      color: 'blue'
+                    }}>Number Of Facilities Stocked Out Adults (2019W31)</Text>
+
+                    {/* <BarChart
+                      width={width - 2}
+                      height={height}
+                      data={data}
+                      chartConfig={chartConfigs}
+                      style={graphStyle}
+                    /> */}
+
+
+
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
+
           }
-          {this.state.seg === 2 && <Text>STKC Selected</Text>}
-          {this.state.seg === 3 && <Text>RTKS Selected</Text>}
+
+          {this.state.seg === 2 &&
+
+
+            <View style={{ flex: 1 }}>
+              <View style={{ flex: 1, paddingLeft: 5, paddingRight: 5, paddingTop: 0 }}>
+                <ScrollView>
+                  <View flexDirection="row">
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem>
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', fontSize: 10 }}>15 of 94 Health Facilities Stocked Out</Text>
+                      </CardItem>
+                    </Card>
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem >
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'flex-start', fontSize: 10 }}>94 of 1074 Health Facilities Reported [Missing Reports]</Text>
+                      </CardItem>
+                    </Card>
+                  </View>
+
+                  <View style={{ flex: 1 }}>
+                    <Text style={{
+                      flex: 1,
+                      marginVertical: 10,
+                      textAlign: 'center',
+                      fontSize: 10,
+                      color: 'blue'
+                    }}>Number Of Facilities Stocked Out Paediatrics (2019W31)</Text>
+
+
+
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
+
+          }
+          {this.state.seg === 3 &&
+
+            <View style={{ flex: 1 }}>
+              <View style={{ flex: 1, paddingLeft: 5, paddingRight: 5, paddingTop: 0 }}>
+                <ScrollView>
+                  <View flexDirection="row">
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem>
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', fontSize: 10 }}>0 of 0 Health Facilities Stocked Out</Text>
+                      </CardItem>
+                    </Card>
+                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 10, alignSelf: 'center' }}>
+                      <CardItem >
+                        <Text style={{ flex: 1, color: 'black', justifyContent: 'flex-start', fontSize: 10 }}>0 of 1083 Health Facilities Reported [Missing Reports]</Text>
+                      </CardItem>
+                    </Card>
+                  </View>
+
+                  <View style={{ flex: 1 }}>
+                    <Text style={{
+                      flex: 1,
+                      marginVertical: 10,
+                      textAlign: 'center',
+                      fontSize: 10,
+                      color: 'blue'
+                    }}>Number Of Facilities Stocked Out RTKS (2019W31)</Text>
+
+
+
+                  </View>
+                </ScrollView>
+              </View>
+            </View>
+
+          }
         </Content>
 
-        <Footer>
+        {/* <Footer>
           <FooterTab>
             <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
               <Text>STKA</Text>
@@ -194,7 +314,7 @@ class Stock extends Component {
               <Text>TB</Text>
             </Button>
           </FooterTab>
-        </Footer>
+        </Footer> */}
       </Container>
     );
   }

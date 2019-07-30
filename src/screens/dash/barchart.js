@@ -51,31 +51,26 @@ export default class Bar extends React.Component {
     return <StatusBar hidden/>
   }
   render() {
-    //const width = Dimensions.get('window').width
+    const width = Dimensions.get('window').width
+    //const height = Dimensions.get('window').height
     const height = 220
-    const width =  600
+    //const width =  600
     return (
               
           <View style={{flex: 1}}>
             
             <View 
-              style={{flex:1, backgroundColor:'grey', paddingLeft:10, paddingRight:10, paddingTop:50}}
+              style={{flex:1, backgroundColor:'grey', paddingLeft:10, paddingRight:10, paddingTop:20}}
             >
             <ScrollView horizontal={true}>
               <BarChart
-                width={width - 20}
+                width={width -2 }
                 height={height}
                 data={data}
                 chartConfig={chartConfigs}
                 style={graphStyle}
               />
-              <BarChart
-                width={width - 20}
-                height={height}
-                data={data}
-                chartConfig={chartConfigs}
-                style={graphStyle}
-              />
+               
             </ScrollView>
             </View>
           </View>
