@@ -217,8 +217,6 @@ class Stock extends Component {
                       style={graphStyle}
                     /> */}
 
-
-
                   </View>
                 </ScrollView>
               </View>
