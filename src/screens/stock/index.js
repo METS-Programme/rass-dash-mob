@@ -110,6 +110,19 @@ class Stock extends Component {
         ["STKA", " ", "1", "0", "0", "0", "0"],
       ],
       widthArr2: [80, 200, 40, 80, 40, 60, 50],
+      tableDataPaed: [
+        ["LPV/r 100/25mg", "Paediatric", "9", "211", "265", "30", "502", "252"],
+        ["AZT/3TC/NVP", "Paediatric", "14", "129", "342", "30", "1858", "539"],
+        ["AZT/3TC 60/30mg", "Paediatric", "5", "255", "226", "29", "433", "191"],
+        ["EFV 200mg", "Paediatric", "35", "129", "325", "26", "1295", "404"],
+        ["ABC/3TC 120/60mg", "Paediatric", "18", "109", "368", "20", "1868", "284"],
+        ["NVP 50mg", "Paediatric", "9", "141", "346", "19", "504", "104"],
+        ["NVP 10mg / ml(240ml)", "Paediatric", "0", "491", "24", "0", "0", "0"],
+        ["NVP 10mg / ml(100ml)", "Paediatric", "0", "186", "329", "0", "0", "0"],
+        ["EFV 50mg", "Paediatric", "0", "504", "11", "0", "0", "0"],
+        ["ABC 60mg", "Paediatric", "0", "506", "9", "0", "0", "0"]
+      ],
+
 
       tab1: true,
       tab2: false,
@@ -306,7 +319,7 @@ class Stock extends Component {
                             <Row
                               data={this.state.table2Header}
                               widthArr={this.state.widthArr2}
-                              style={{ flex: 1, height: 25, backgroundColor: '#f1f8ff', justifyContent: 'center' }} />
+                              style={{ flex: 1, height: 25, backgroundColor: '#f1f8ff', justifyContent: 'center', color: 'black' }} />
 
                             <Rows
                               data={this.state.table2Data}
@@ -351,9 +364,44 @@ class Stock extends Component {
                       color: 'blue'
                     }}>Number Of Facilities Stocked Out Paediatrics (2019W31)</Text>
 
-
+                    {<BarChart
+                      width={width - 2}
+                      height={height}
+                      data={data}
+                      chartConfig={chartConfigs}
+                      style={graphStyle}
+                    />}
 
                   </View>
+                  <View style={{ flex: 1 }}>
+                    <Text style={{
+                      flex: 1,
+                      marginVertical: 10,
+                      textAlign: 'center',
+                      fontSize: 10,
+                      color: 'blue'
+                    }}>Stock Status [HIV Commodities] - Number Of Facilities</Text>
+
+                    <>
+                      <ScrollView horizontal={true}>
+                        <View style={{ flex: 1, padding: 5, paddingTop: 0, backgroundColor: '#fff' }}>
+                          <Table style={{ borderWidth: 0, borderColor: '#c8e1ff' }}>
+                            <Row
+                              data={this.state.tableHead}
+                              widthArr={this.state.widthArr}
+                              style={{ flex: 1, height: 25, backgroundColor: '#f1f8ff', justifyContent: 'center' }} />
+
+                            <Rows
+                              data={this.state.tableDataPaed}
+                              widthArr={this.state.widthArr} />
+                          </Table>
+                        </View>
+                      </ScrollView>
+                    </>
+                  </View>
+
+
+                  <View style={{ flex: 1 }}></View>
                 </ScrollView>
               </View>
             </View>
