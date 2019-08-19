@@ -30,11 +30,11 @@ import {
 } from 'react-native-chart-kit'
 
 const data = {
-  labels: [' Kampala', 'Lango', 'Masaka', 'Soroti', 'West Nile'],
+  labels: ['Acholi', 'Bunyoro', 'Central 1', 'Central', 'East',' Kampala', 'Lango', 'Masaka', 'Rwenzori','Soroti', 'West Nile'],
   datasets: [{
     data: [
 
-      0, 1, 7, 1, 1,
+      0, 0, 0, 0, 10, 2, 1, 7, 1, 1,0,
     ],
     color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})` // optional
   }]
@@ -49,9 +49,7 @@ const chartConfigs =
   // style: {
   //     borderRadius: 16                                     ---- removed for the bar graph not needed
   // }
-}
-
-
+}  
 // Table header items
 const head = [
   "Commodity",
@@ -364,14 +362,18 @@ class Stock extends Component {
                       color: 'blue'
                     }}>Number Of Facilities Stocked Out Paediatrics (2019W31)</Text>
 
-                    {<BarChart
-                      width={width - 2}
-                      height={height}
-                      data={data}
-                      chartConfig={chartConfigs}
-                      style={graphStyle}
-                    />}
-
+                    <View flexDirection="row">
+                      <ScrollView horizontal={true}>
+                        {<BarChart
+                          flexDirection = 'row'
+                          width={width}
+                          height={height}
+                          data={data}
+                          chartConfig={chartConfigs}
+                          style={graphStyle}
+                        />}
+                      </ScrollView>
+                    </View>
                   </View>
                   <View style={{ flex: 1 }}>
                     <Text style={{

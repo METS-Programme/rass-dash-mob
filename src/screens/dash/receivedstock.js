@@ -13,9 +13,9 @@ import {
 } from 'react-native-chart-kit'
 
 import 'babel-polyfill'
-import { Card, CardItem, Header, H1, CardSwiper, CardSection, Container, Left, Icon, Right, Button, Title, Body, Drawer } from 'native-base';
+import { Card, CardItem, Header, H1, CardSwiper, CardSection, Container, Left, Icon, Right, Button, Title, Body, Drawer, Segment } from 'native-base';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-  
 
 
 const data = {
@@ -69,7 +69,15 @@ const styles = {
 }
 
 
-export default class ReceivedStock extends React.Component {
+class ReceivedStock extends React.Component {
+
+    constructor(props) {
+        super(props);  
+        this.state = {
+
+        };
+ 
+    }
 
     renderTabBar() {
         return <StatusBar hidden />
@@ -77,135 +85,144 @@ export default class ReceivedStock extends React.Component {
     render() {
         const width = Dimensions.get('window').width
         const height = 220
+       
         return (
             <Container style={styles.container}>
                 <Header>
-                    
+                    <TouchableOpacity >
+                        
+                    </TouchableOpacity>
                     <Body>
-                        <Title style={{justifyContent:'center'}}>Received Stock</Title>
+                        <Title style={{ justifyContent: 'center' }}>Received Stock</Title>
                     </Body>
                 </Header>
+ 
 
-                <View style={{ flex: 1 }}>
-                    <View style={{ flex: 1, paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
+                    <View style={{ flex: 1 }}>
+                        <View style={{ flex: 1, paddingLeft: 10, paddingRight: 10, paddingTop: 5 }}>
 
-                        <ScrollView >
-                            <Text style={{
-                                flex: 1,
-                                marginVertical: 10,
-                                textAlign: 'center',
-                                fontSize: 16,
-                                color: 'blue'
-                            }}>Quantity of ARVs received by Sites</Text>
-                            <View flexDirection="row">
-                                <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                    <CardItem >
-                                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Adults 1st Line Regimen (50,567)</Text>
-                                    </CardItem>
-                                </Card>
-
-                                <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                    <CardItem >
-                                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Adults 2nd Line Regimen (150,567)</Text>
-                                    </CardItem>
-                                </Card>
-
-                            </View>
-
-                            <View flexDirection="row">
-                                <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                    <CardItem >
-                                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Paed 1st Line Regimen (40,620)</Text>
-                                    </CardItem>
-                                </Card>
-
-                                <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                    <CardItem >
-                                        <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Paed 2nd Line Regimen (50,567)</Text>
-                                    </CardItem>
-                                </Card>
-                            </View>
-
-                            <View style={{ flex: 1 }}>
+                            <ScrollView >
                                 <Text style={{
                                     flex: 1,
                                     marginVertical: 10,
                                     textAlign: 'center',
                                     fontSize: 16,
                                     color: 'blue'
-                                }}>Stock Recieved Vs Stock Ordered</Text>
-
-                                <BarChart
-                                    width={width - 2}
-                                    height={height}
-                                    data={data}
-                                    chartConfig={chartConfigs}
-                                    style={graphStyle}
-                                />
-
-                            </View>
-
-                            <View style={{ flex: 1 }}>
-                                <Text style={{
-                                    flex: 1,
-                                    marginVertical: 10,
-                                    textAlign: 'center',
-                                    fontSize: 16,
-                                    color: 'blue'
-                                }}>Statistics - Uganda (2018W29) Total Received Stock Per Region</Text>
+                                }}>Quantity of ARVs received by Sites</Text>
                                 <View flexDirection="row">
                                     <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
                                         <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Rwenzori Region(5,407)</Text>
+                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Adults 1st Line Regimen (50,567)</Text>
                                         </CardItem>
                                     </Card>
 
                                     <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
                                         <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>West Nile Region (78,464)</Text>
+                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Adults 2nd Line Regimen (150,567)</Text>
                                         </CardItem>
                                     </Card>
+
                                 </View>
 
                                 <View flexDirection="row">
                                     <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
                                         <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Central Region (80,560)</Text>
+                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Paed 1st Line Regimen (40,620)</Text>
                                         </CardItem>
                                     </Card>
+
                                     <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
                                         <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Masaka Region(359)</Text>
+                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Paed 2nd Line Regimen (50,567)</Text>
                                         </CardItem>
                                     </Card>
                                 </View>
 
-                                <View flexDirection="row">
+                                <View style={{ flex: 1 }}>
+                                    <Text style={{
+                                        flex: 1,
+                                        marginVertical: 10,
+                                        textAlign: 'center',
+                                        fontSize: 16,
+                                        color: 'blue'
+                                    }}>Stock Recieved Vs Stock Ordered</Text>
 
-                                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                        <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Bunyoro Region (59)</Text>
-                                        </CardItem>
-                                    </Card>
+                                    <BarChart
+                                        width={width - 2}
+                                        height={height}
+                                        data={data}
+                                        chartConfig={chartConfigs}
+                                        style={graphStyle}
+                                    />
 
-                                    <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
-                                        <CardItem >
-                                            <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Kampala Region (59)</Text>
-                                        </CardItem>
-                                    </Card> 
+
                                 </View>
 
-                            </View>
+                                <View style={{ flex: 1 }}>
+                                    <Text style={{
+                                        flex: 1,
+                                        marginVertical: 10,
+                                        textAlign: 'center',
+                                        fontSize: 16,
+                                        color: 'blue'
+                                    }}>Statistics - Uganda (2018W29) Total Received Stock Per Region</Text>
+                                    <View flexDirection="row">
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Rwenzori Region(5,407)</Text>
+                                            </CardItem>
+                                        </Card>
+
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>West Nile Region (78,464)</Text>
+                                            </CardItem>
+                                        </Card>
+                                    </View>
+
+                                    <View flexDirection="row">
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Central Region (80,560)</Text>
+                                            </CardItem>
+                                        </Card>
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Masaka Region(359)</Text>
+                                            </CardItem>
+                                        </Card>
+                                    </View>
+
+                                    <View flexDirection="row">
+
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Bunyoro Region (59)</Text>
+                                            </CardItem>
+                                        </Card>
+
+                                        <Card style={{ flex: 1, height: 60, justifyContent: 'center', alignItems: 'center', margin: 20, alignSelf: 'center' }}>
+                                            <CardItem >
+                                                <Text style={{ flex: 1, color: 'black', justifyContent: 'center', }}>Kampala Region (59)</Text>
+                                            </CardItem>
+                                        </Card>
+                                    </View>
+
+                                </View>
 
 
 
-                        </ScrollView>
+                            </ScrollView>
+                        </View>
                     </View>
-                </View>
 
+
+
+                
 
 
             </Container>
         )
     }
-}
+} 
+export default ReceivedStock
