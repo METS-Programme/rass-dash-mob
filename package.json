@@ -9,7 +9,7 @@
   "dependencies": {
     "@types/react-native": "^0.57.43",
     "babel-polyfill": "^6.26.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "native-base": "^2.12.1",
     "paths-js": "^0.4.7",
     "point-in-polygon": "^1.0.1",
