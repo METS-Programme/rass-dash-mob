@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { View, Text, SafeAreaView} from 'react-native'
 
 import Bar from './barchart'
+import ReceivedStock from './receivedstock';
  
 class Dashboard extends Component {
 
@@ -12,7 +13,7 @@ class Dashboard extends Component {
     render () {
         return (
             <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
-                <Bar />
+                <ReceivedStock />
             </SafeAreaView>  
         )
     }

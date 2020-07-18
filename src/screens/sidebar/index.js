@@ -24,24 +24,24 @@ const datas = [
     bg: "#9F897C"
   },
   {
-    name: "Commodities",
+    name: "Stock Status",
     route: "Stock",
     icon: "keypad",
     bg: "#9F897C",
-    types: "3"
+    //types: "3"
   },
-  {
-    name: "Reports",
-    route: "NHTypography",
-    icon: "paper",
-    bg: "#48525D"
-  },
-  {
-    name: "Demos",
-    route: "Demo",
-    icon: "paper",
-    bg: "#48525D"
-  }
+   {
+     name: "Reports",
+     route: "NHTypography",
+     icon: "paper",
+     bg: "#48525D"
+   }//,
+  // {
+  //   name: "Demos",
+  //   route: "Demo",
+  //   icon: "paper",
+  //   bg: "#48525D"
+  // }
 ];
 
 class SideBar extends Component {
